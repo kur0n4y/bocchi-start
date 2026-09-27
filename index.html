@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bocchi Start</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+
+      background: #09090d;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .bocchi {
+      width: 280px;
+      max-height: 350px;
+      object-fit: contain;
+
+      border-radius: 20px;
+
+      box-shadow:
+        0 0 25px rgba(192, 132, 252, 0.25),
+        0 15px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    #clock {
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .search {
+      width: min(600px, 80vw);
+      height: 55px;
+
+      display: flex;
+      align-items: center;
+
+      background: #15151d;
+      border: 1px solid #c084fc66;
+      border-radius: 30px;
+
+      padding: 0 20px;
+
+      box-shadow: 0 0 25px rgba(192, 132, 252, 0.08);
+    }
+
+    .search input {
+      width: 100%;
+      height: 100%;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+      color: white;
+
+      font-size: 17px;
+    }
+
+    .search input::placeholder {
+      color: #888;
+    }
+
+    .search button {
+      border: none;
+      background: transparent;
+      color: #c084fc;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img class="Miku" src="miku.jpg" alt="Hatsune Miku">
+
+  <div id="clock">00:00</div>
+
+  <form class="search" action="https://www.google.com/search" method="GET">
+    <input
+      type="text"
+      name="q"
+      placeholder="Rechercher sur Google..."
+      autocomplete="off"
+      autofocus
+    >
+    <button type="submit">⌕</button>
+  </form>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+
+      document.getElementById("clock").textContent =
+        `${hours}:${minutes}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
